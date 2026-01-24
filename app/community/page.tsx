@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import { API_BASE_URL } from '@/lib/api-config';
 
 export default function CommunityPage() {
     const router = useRouter();
@@ -15,7 +14,7 @@ export default function CommunityPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${API_BASE_URL}/api/community`)
+        fetch('/api/community')
             .then(res => {
                 if (res.status === 401) {
                     toast.error('Session expired. Please log in again.');

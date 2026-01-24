@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { toast } from 'sonner';
-import { API_BASE_URL } from '@/lib/api-config';
 
 export default function SignupPage() {
     const [name, setName] = useState('');
@@ -18,7 +17,7 @@ export default function SignupPage() {
         setLoading(true);
 
         try {
-            const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
+            const res = await fetch('/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password }),

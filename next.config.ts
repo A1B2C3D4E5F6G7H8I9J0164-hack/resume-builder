@@ -16,6 +16,14 @@ const nextConfig: NextConfig = {
         ],
         unoptimized: true,
     },
+    async rewrites() {
+        return [
+            {
+                source: '/api/:path*',
+                destination: 'https://resume-builder-a6ve.onrender.com/api/:path*',
+            },
+        ];
+    },
 };
 
 export default nextConfig;

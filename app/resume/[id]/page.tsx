@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation';
 import ResumeRenderer from '@/components/resume/ResumeRenderer';
 import { Download, Share2, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
-import { API_BASE_URL } from '@/lib/api-config';
 
 export default function ResumePage() {
     const { id } = useParams();
@@ -13,7 +12,7 @@ export default function ResumePage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${API_BASE_URL}/api/resumes/${id}`)
+        fetch(`/api/resumes/${id}`)
             .then(res => res.json())
             .then(data => {
                 setResume(data.resume);
