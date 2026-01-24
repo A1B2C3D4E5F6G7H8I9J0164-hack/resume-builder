@@ -6,6 +6,7 @@ import { ResumeCard } from '@/components/dashboard/ResumeCard';
 import { FileText, Search, Filter, ArrowUpDown } from 'lucide-react';
 import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'motion/react';
+import { API_BASE_URL } from '@/lib/api-config';
 
 export default function ResumesPage() {
     const [resumes, setResumes] = useState([]);
@@ -17,7 +18,7 @@ export default function ResumesPage() {
 
     const fetchResumes = async () => {
         try {
-            const res = await fetch('/api/resumes');
+            const res = await fetch(`${API_BASE_URL}/api/resumes`);
             const data = await res.json();
             if (res.ok) setResumes(data.resumes);
         } catch (error) {
@@ -30,7 +31,7 @@ export default function ResumesPage() {
     const deleteResume = async (id: string) => {
         if (!confirm('Are you sure you want to delete this resume?')) return;
         try {
-            const res = await fetch(`/api/resumes/${id}`, { method: 'DELETE' });
+            const res = await fetch(`${API_BASE_URL}/api/resumes/${id}`, { method: 'DELETE' });
             if (res.ok) {
                 setResumes(resumes.filter((r: any) => r._id !== id));
                 toast.success('Resume deleted');

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useRouter } from 'next/navigation';
 import { User, Briefcase, GraduationCap, Code, Layout, Palette, Wand2, ArrowRight, ArrowLeft, Save, Plus, Trash2, Eye } from 'lucide-react';
 import { toast } from 'sonner';
+import { API_BASE_URL } from '@/lib/api-config';
 import { SAMPLE_RESUME_DATA } from '@/data/sample-resume';
 import ResumeRenderer from './ResumeRenderer';
 
@@ -83,7 +84,7 @@ export default function ResumeBuilder() {
     const handleSave = async () => {
         setLoading(true);
         try {
-            const res = await fetch('/api/resumes', {
+            const res = await fetch(`${API_BASE_URL}/api/resumes`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

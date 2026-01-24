@@ -17,6 +17,7 @@ import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'motion/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { API_BASE_URL } from '@/lib/api-config';
 
 export default function Dashboard() {
     const router = useRouter();
@@ -29,7 +30,7 @@ export default function Dashboard() {
 
     const fetchResumes = async () => {
         try {
-            const res = await fetch('/api/resumes');
+            const res = await fetch(`${API_BASE_URL}/api/resumes`);
             const data = await res.json();
 
             if (res.status === 401) {
@@ -49,7 +50,7 @@ export default function Dashboard() {
     const deleteResume = async (id: string) => {
         if (!confirm('Are you sure you want to delete this resume?')) return;
         try {
-            const res = await fetch(`/api/resumes/${id}`, { method: 'DELETE' });
+            const res = await fetch(`${API_BASE_URL}/api/resumes/${id}`, { method: 'DELETE' });
 
             if (res.status === 401) {
                 toast.error('Session expired. Please log in again.');

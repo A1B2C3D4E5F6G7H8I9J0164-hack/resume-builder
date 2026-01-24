@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import ResumeRenderer from '@/components/resume/ResumeRenderer';
 import { Download, Share2, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { API_BASE_URL } from '@/lib/api-config';
 
 export default function ResumePage() {
     const { id } = useParams();
@@ -12,7 +13,7 @@ export default function ResumePage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`/api/resumes/${id}`)
+        fetch(`${API_BASE_URL}/api/resumes/${id}`)
             .then(res => res.json())
             .then(data => {
                 setResume(data.resume);
@@ -25,7 +26,7 @@ export default function ResumePage() {
 
     return (
         <div className="min-h-screen bg-zinc-900 overflow-y-auto">
-            {}
+            { }
             <div className="print:hidden sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800 p-4">
                 <div className="max-w-5xl mx-auto flex justify-between items-center">
                     <Link href="/dashboard" className="flex items-center space-x-2 text-zinc-400 hover:text-white transition-all">
@@ -48,7 +49,7 @@ export default function ResumePage() {
                 </div>
             </div>
 
-            {}
+            { }
             <div className="py-12 print:p-0">
                 <ResumeRenderer data={resume} />
             </div>

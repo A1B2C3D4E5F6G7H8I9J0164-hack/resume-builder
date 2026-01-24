@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { API_BASE_URL } from '@/lib/api-config';
 
 export default function CommunityPage() {
     const router = useRouter();
@@ -14,7 +15,7 @@ export default function CommunityPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/api/community')
+        fetch(`${API_BASE_URL}/api/community`)
             .then(res => {
                 if (res.status === 401) {
                     toast.error('Session expired. Please log in again.');
@@ -34,7 +35,7 @@ export default function CommunityPage() {
     return (
         <DashboardLayout>
             <div className="space-y-10">
-                {}
+                { }
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div>
                         <div className="flex items-center space-x-2 text-blue-500 mb-2">
@@ -112,7 +113,7 @@ export default function CommunityPage() {
                                         </div>
                                     </div>
 
-                                    {}
+                                    { }
                                     <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-blue-600/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </motion.div>
                             ))}
