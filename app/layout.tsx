@@ -18,7 +18,7 @@ export default function RootLayout({ children, }: Readonly<{
             <head>
                 <link rel="preload" href="/assets/background-splash.svg" as="image" />
             </head>
-            <body className={poppins.className}>
+            <body className={poppins.className} suppressHydrationWarning>
                 <LenisScroll />
                 <Toaster position="top-center" richColors />
                 {children}

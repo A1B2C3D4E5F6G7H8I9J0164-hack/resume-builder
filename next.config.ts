@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
         ],
         unoptimized: true,
     },
+    /*
     async rewrites() {
         // Skip proxying if we are already running on the Render backend
         if (process.env.RENDER) {
@@ -31,6 +32,7 @@ const nextConfig: NextConfig = {
             ],
         };
     },
+    */
 };
 
 export default nextConfig;
