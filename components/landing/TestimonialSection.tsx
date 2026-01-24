@@ -1,33 +1,22 @@
-import SectionTitle from "@/components/SectionTitle";
+import SectionTitle from "./SectionTitle";
 import TestimonialCard from "@/components/TestimonialCard";
 import { testimonialsData } from "@/data/testimonial";
 import { ITestimonial } from "@/types";
-import Marquee from "react-fast-marquee";
 
 export default function TestimonialSection() {
     return (
-        <div id="testimonials" className="px-4 md:px-16 lg:px-24 xl:px-32 py-20 relative overflow-hidden">
+        <div id="testimonials" className="px-4 md:px-16 lg:px-24 xl:px-32 py-20 bg-zinc-950">
             <SectionTitle
                 text1="Stories"
-                text2="Trusted by Global Elite"
-                text3="Our users are landing offers at Tier-1 tech companies and high-growth startups globally."
+                text2="Trusted by Professionals"
+                text3="Our users are landing offers at competitive tech companies and high-growth startups globally."
             />
 
-            <Marquee className="max-w-7xl mx-auto mt-20" gradient={true} speed={30} gradientColor="#000">
-                <div className="flex items-center justify-center py-10 overflow-hidden">
-                    {[...testimonialsData, ...testimonialsData].map((testimonial: ITestimonial, index: number) => (
-                        <TestimonialCard key={index} index={index} testimonial={testimonial} />
-                    ))}
-                </div>
-            </Marquee>
-            <Marquee className="max-w-7xl mx-auto" gradient={true} speed={30} direction="right" gradientColor="#000">
-                <div className="flex items-center justify-center py-10 overflow-hidden">
-                    {[...testimonialsData, ...testimonialsData].map((testimonial: ITestimonial, index: number) => (
-                        <TestimonialCard key={index} index={index} testimonial={testimonial} />
-                    ))}
-                </div>
-            </Marquee>
-
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-20 max-w-7xl mx-auto">
+                {testimonialsData.map((testimonial: ITestimonial, index: number) => (
+                    <TestimonialCard key={index} index={index} testimonial={testimonial} />
+                ))}
+            </div>
         </div>
     );
 }

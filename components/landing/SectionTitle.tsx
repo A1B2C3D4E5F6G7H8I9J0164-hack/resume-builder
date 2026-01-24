@@ -1,34 +1,29 @@
 'use client'
-import { SectionTitleProps } from "@/types";
-import { motion } from "motion/react";
+import { motion } from "motion/react"
+
+interface SectionTitleProps {
+    text1: string;
+    text2: string;
+    text3: string;
+}
 
 export default function SectionTitle({ text1, text2, text3 }: SectionTitleProps) {
     return (
-        <>
-            <motion.p className="text-center text-[10px] font-black uppercase tracking-widest text-blue-500 mt-28 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 w-max mx-auto shadow-[0_0_20px_rgba(59,130,246,0.1)]"
-                initial={{ y: 120, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 320, damping: 70, mass: 1 }}
-            >
+        <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center justify-center text-center space-y-4"
+        >
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">
                 {text1}
-            </motion.p>
-            <motion.h3 className="text-3xl font-semibold text-center mx-auto mt-4"
-                initial={{ y: 120, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 280, damping: 70, mass: 1 }}
-            >
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white max-w-3xl">
                 {text2}
-            </motion.h3>
-            <motion.p className="text-slate-300 text-center mt-2 max-w-xl mx-auto"
-                initial={{ y: 120, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 240, damping: 70, mass: 1 }}
-            >
+            </h2>
+            <p className="text-zinc-500 font-medium max-w-xl text-lg leading-relaxed">
                 {text3}
-            </motion.p>
-        </>
+            </p>
+        </motion.div>
     );
 }

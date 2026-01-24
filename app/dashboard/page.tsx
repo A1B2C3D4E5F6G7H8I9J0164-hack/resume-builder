@@ -68,53 +68,32 @@ export default function Dashboard() {
 
     return (
         <DashboardLayout>
-            <div className="space-y-10">
-                {}
+            <div className="space-y-12">
                 <div className="relative group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-                    <div className="relative bg-zinc-900 border border-white/5 rounded-[2rem] p-10 overflow-hidden">
+                    <div className="relative bg-zinc-900/50 border border-zinc-900 rounded-3xl p-10 overflow-hidden">
                         <div className="max-w-xl relative z-10">
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-[10px] uppercase tracking-widest font-bold mb-6"
-                            >
-                                <Zap size={12} />
-                                <span>Winter Update 2026</span>
-                            </motion.div>
-                            <h1 className="text-5xl font-bold tracking-tight mb-4">
-                                Elevate your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Career Game.</span>
+                            <h1 className="text-4xl font-bold tracking-tight mb-4 text-white">
+                                Welcome back, <span className="text-zinc-500">Aditya.</span>
                             </h1>
-                            <p className="text-zinc-400 text-lg mb-8 leading-relaxed">
-                                Welcome back, Aditya. You have <span className="text-white font-semibold">{resumes.length} active resumes</span>. Ready to build something world-class today?
+                            <p className="text-zinc-500 text-lg mb-8 leading-relaxed font-medium">
+                                You have <span className="text-white font-bold">{resumes.length} professional profiles</span> active. Ready to refine your career narrative today?
                             </p>
                             <Link
                                 href="/dashboard/create"
-                                className="inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-2xl font-bold hover:scale-105 transition-all shadow-xl shadow-white/10 group"
+                                className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-black rounded-xl font-bold hover:bg-zinc-200 transition-all active:scale-95 group"
                             >
                                 <span>Create New Resume</span>
-                                <ArrowUpRight className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={20} />
+                                <ArrowUpRight className="ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" size={18} />
                             </Link>
                         </div>
-
-                        <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-blue-600/10 to-transparent pointer-events-none" />
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2 }}
-                            className="absolute right-10 top-1/2 -translate-y-1/2 opacity-20 pointer-events-none"
-                        >
-                            <Trophy size={280} className="text-blue-500" />
-                        </motion.div>
                     </div>
                 </div>
 
-                {}
                 <div>
-                    <div className="flex justify-between items-end mb-6">
+                    <div className="flex justify-between items-end mb-6 px-2">
                         <div>
-                            <h2 className="text-2xl font-bold">Performance</h2>
-                            <p className="text-zinc-500 text-sm">Key metrics for your career growth</p>
+                            <h2 className="text-xl font-bold text-white tracking-tight">Overview</h2>
+                            <p className="text-zinc-500 text-sm font-medium">Your current performance metrics</p>
                         </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -123,14 +102,12 @@ export default function Dashboard() {
                             value={resumes.length}
                             icon={FileText}
                             color="blue"
-                            trend={{ value: '12%', isUp: true }}
                         />
                         <StatCard
-                            title="Views"
-                            value="2.4k"
+                            title="Profile Views"
+                            value="2,482"
                             icon={Users}
                             color="emerald"
-                            trend={{ value: '8%', isUp: true }}
                         />
                         <StatCard
                             title="Success Rate"
@@ -139,48 +116,46 @@ export default function Dashboard() {
                             color="amber"
                         />
                         <StatCard
-                            title="AI Optimizations"
-                            value="42"
+                            title="AI Score"
+                            value="98"
                             icon={Zap}
                             color="indigo"
-                            trend={{ value: '150', isUp: true }}
                         />
                     </div>
                 </div>
 
-                {}
                 <div>
-                    <div className="flex justify-between items-end mb-8">
+                    <div className="flex justify-between items-end mb-8 px-2">
                         <div>
-                            <h2 className="text-2xl font-bold">Your Resumes</h2>
-                            <p className="text-zinc-500 text-sm">Manage and edit your professional profiles</p>
+                            <h2 className="text-xl font-bold text-white tracking-tight">Your Resumes</h2>
+                            <p className="text-zinc-500 text-sm font-medium">Manage and refine your professional profiles</p>
                         </div>
                         <div className="flex items-center space-x-2">
-                            <div className="bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-1.5 flex items-center space-x-2">
-                                <Search size={14} className="text-zinc-500" />
-                                <input type="text" placeholder="Filter..." className="bg-transparent border-none outline-none text-sm w-32 placeholder:text-zinc-700" />
+                            <div className="bg-zinc-900/50 border border-zinc-900 rounded-xl px-4 py-2 flex items-center space-x-2">
+                                <Search size={14} className="text-zinc-600" />
+                                <input type="text" placeholder="Search..." className="bg-transparent border-none outline-none text-sm w-32 text-zinc-300 placeholder:text-zinc-700 font-medium" />
                             </div>
                         </div>
                     </div>
 
                     {loading ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {[1, 2, 3, 4].map((i) => (
-                                <div key={i} className="aspect-[3/4] bg-zinc-900/50 rounded-3xl animate-pulse border border-zinc-800" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {[1, 2, 3].map((i) => (
+                                <div key={i} className="aspect-[4/5] bg-zinc-900/20 rounded-3xl animate-pulse border border-zinc-900" />
                             ))}
                         </div>
                     ) : resumes.length === 0 ? (
-                        <div className="text-center py-20 bg-zinc-900/30 border-2 border-dashed border-zinc-800 rounded-[3rem]">
-                            <div className="bg-zinc-900 h-24 w-24 rounded-3xl flex items-center justify-center mx-auto mb-6 rotate-12 group hover:rotate-0 transition-transform duration-500">
-                                <FilePlus className="text-zinc-700 group-hover:text-blue-500" size={48} />
+                        <div className="text-center py-24 bg-zinc-900/10 border border-zinc-900 rounded-[2.5rem]">
+                            <div className="bg-zinc-900/50 h-20 w-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                                <FilePlus className="text-zinc-800" size={32} />
                             </div>
-                            <h3 className="text-2xl font-bold mb-2 text-zinc-200">No resumes found</h3>
-                            <p className="text-zinc-500 max-w-xs mx-auto mb-8">
-                                Start your journey by creating your first AI-optimized professional resume.
+                            <h3 className="text-xl font-bold mb-2 text-zinc-400">No resumes yet</h3>
+                            <p className="text-zinc-600 max-w-xs mx-auto mb-8 font-medium">
+                                Start building your first professional profile with our streamlined tools.
                             </p>
                             <Link
                                 href="/dashboard/create"
-                                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-2xl font-bold transition-all inline-block shadow-lg shadow-blue-500/20"
+                                className="bg-zinc-900 text-white px-10 py-3.5 rounded-xl font-bold hover:bg-zinc-800 transition-all inline-block border border-zinc-800"
                             >
                                 Get Started
                             </Link>
@@ -188,7 +163,7 @@ export default function Dashboard() {
                     ) : (
                         <motion.div
                             layout
-                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                         >
                             <AnimatePresence mode='popLayout'>
                                 {resumes.map((resume: any) => (
