@@ -21,26 +21,33 @@ import { useRouter } from 'next/navigation';
 export default function Dashboard() {
     const router = useRouter();
     const [resumes, setResumes] = useState([]);
+    const [user, setUser] = useState<any>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchResumes();
+        fetchData();
     }, []);
 
-    const fetchResumes = async () => {
+    const fetchData = async () => {
         try {
-            const res = await fetch('/api/resumes');
-            const data = await res.json();
+            const [resumesRes, userRes] = await Promise.all([
+                fetch('/api/resumes'),
+                fetch('/api/auth/me')
+            ]);
 
-            if (res.status === 401) {
+            const resumesData = await resumesRes.json();
+            const userData = await userRes.json();
+
+            if (resumesRes.status === 401 || userRes.status === 401) {
                 toast.error('Session expired. Please log in again.');
                 router.push('/login');
                 return;
             }
 
-            if (res.ok) setResumes(data.resumes);
+            if (resumesRes.ok) setResumes(resumesData.resumes);
+            if (userRes.ok) setUser(userData.user);
         } catch (error) {
-            toast.error('Failed to fetch resumes');
+            toast.error('Failed to fetch data');
         } finally {
             setLoading(false);
         }
@@ -73,7 +80,7 @@ export default function Dashboard() {
                     <div className="relative bg-zinc-900/50 border border-zinc-900 rounded-3xl p-10 overflow-hidden">
                         <div className="max-w-xl relative z-10">
                             <h1 className="text-4xl font-bold tracking-tight mb-4 text-white">
-                                Welcome back, <span className="text-zinc-500">Aditya.</span>
+                                Welcome back, <span className="text-zinc-500">{user?.name?.split(' ')[0] || 'User'}.</span>
                             </h1>
                             <p className="text-zinc-500 text-lg mb-8 leading-relaxed font-medium">
                                 You have <span className="text-white font-bold">{resumes.length} professional profiles</span> active. Ready to refine your career narrative today?
