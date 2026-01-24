@@ -17,12 +17,19 @@ const nextConfig: NextConfig = {
         unoptimized: true,
     },
     async rewrites() {
-        return [
-            {
-                source: '/api/:path*',
-                destination: 'https://resume-builder-a6ve.onrender.com/api/:path*',
-            },
-        ];
+        // Skip proxying if we are already running on the Render backend
+        if (process.env.RENDER) {
+            return [];
+        }
+
+        return {
+            beforeFiles: [
+                {
+                    source: '/api/:path*',
+                    destination: 'https://resume-builder-a6ve.onrender.com/api/:path*',
+                },
+            ],
+        };
     },
 };
 
