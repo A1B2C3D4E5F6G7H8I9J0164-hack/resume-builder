@@ -11,14 +11,16 @@ async function dbConnect() {
     let MONGODB_URI = process.env.MONGODB_URI?.trim();
 
     if (!MONGODB_URI) {
-        console.error('CRITICAL: MONGODB_URI is missing or empty.');
+        console.error('CRITICAL ERROR: MONGODB_URI is missing or empty.');
         throw new Error('Please define the MONGODB_URI environment variable (check your .env or Render dashboard)');
     }
 
-    // Diagnostic logging (safe)
-    if (process.env.NODE_ENV !== 'production') {
-        console.log('MongoDB connection attempt with prefix:', MONGODB_URI.substring(0, 15) + '...');
-    }
+    // Aggressive cleaning: Remove any literal quotes that might have been pasted accidentally
+    MONGODB_URI = MONGODB_URI.replace(/^["']|["']$/g, '').trim();
+
+    // Production-ready logging (safe)
+    console.log(`[Database] Attempting connection. URI starts with: ${MONGODB_URI.substring(0, 15)}...`);
+
 
     if (cached.conn) {
         return cached.conn;
