@@ -12,6 +12,8 @@ export default function HeroSection() {
 
     return (
         <div className="relative flex flex-col items-center justify-center px-4 md:px-16 lg:px-24 xl:px-32 pt-32 pb-20 bg-zinc-950 overflow-hidden">
+            <div className="absolute top-40 -z-10 left-1/4 size-[500px] bg-blue-600/20 blur-[150px] animate-pulse"></div>
+            <div className="absolute top-60 -z-10 right-1/4 size-[400px] bg-indigo-600/10 blur-[150px]"></div>
             <motion.h1 className="text-6xl/tight md:text-8xl/tight font-bold max-w-4xl text-center tracking-tight text-white"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
