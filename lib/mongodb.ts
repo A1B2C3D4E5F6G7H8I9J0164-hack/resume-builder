@@ -8,11 +8,16 @@ if (!cached) {
 }
 
 async function dbConnect() {
-    const MONGODB_URI = process.env.MONGODB_URI;
+    let MONGODB_URI = process.env.MONGODB_URI?.trim();
 
     if (!MONGODB_URI) {
-        console.error('CRITICAL: MONGODB_URI is missing from environment variables.');
+        console.error('CRITICAL: MONGODB_URI is missing or empty.');
         throw new Error('Please define the MONGODB_URI environment variable (check your .env or Render dashboard)');
+    }
+
+    // Diagnostic logging (safe)
+    if (process.env.NODE_ENV !== 'production') {
+        console.log('MongoDB connection attempt with prefix:', MONGODB_URI.substring(0, 15) + '...');
     }
 
     if (cached.conn) {
