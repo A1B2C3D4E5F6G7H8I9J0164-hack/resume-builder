@@ -24,10 +24,10 @@ export default function Navbar() {
                 animate={{ y: 0, opacity: 1 }}
             >
                 <Link href="/" className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <FileText className="text-white" size={18} />
+                    <div className="w-8 h-8 bg-zinc-900 border border-zinc-800 rounded-lg flex items-center justify-center">
+                        <FileText className="text-white" size={16} />
                     </div>
-                    <span className="text-xl font-bold tracking-tighter italic text-white select-none">RESUME.AI</span>
+                    <span className="text-xl font-bold tracking-tight text-white select-none">RESUME.AI</span>
                 </Link>
 
                 <div className="hidden md:flex items-center gap-8">
