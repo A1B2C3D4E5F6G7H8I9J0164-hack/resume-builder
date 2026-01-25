@@ -4,10 +4,31 @@
 
 __turbopack_context__.s([
     "API_URL",
-    ()=>API_URL
+    ()=>API_URL,
+    "fetchWithAuth",
+    ()=>fetchWithAuth
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/frontend/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
-const API_URL = ("TURBOPACK compile-time value", "https://resumeai-k88u.onrender.com") || 'http://localhost:5005';
+const API_URL = ("TURBOPACK compile-time value", "http://localhost:5005") || 'http://localhost:5005';
+const fetchWithAuth = async (endpoint, options = {})=>{
+    const url = endpoint.startsWith('http') ? endpoint : `${API_URL}${endpoint}`;
+    // Ensure credentials are included for cross-site cookies
+    const defaultOptions = {
+        ...options,
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
+    };
+    try {
+        const response = await fetch(url, defaultOptions);
+        return response;
+    } catch (error) {
+        console.error(`Failed to fetch ${url}:`, error);
+        throw new Error(`Network error: Unable to reach ${API_URL}. Please check if the backend is running.`);
+    }
+};
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -77,7 +98,7 @@ function Sidebar() {
     _s();
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"])();
     const handleLogout = async ()=>{
-        await fetch(`${__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API_URL"]}/api/auth/logout`, {
+        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchWithAuth"])('/api/auth/logout', {
             method: 'POST'
         });
         window.location.href = '/login';
@@ -706,8 +727,8 @@ function Dashboard() {
     const fetchData = async ()=>{
         try {
             const [resumesRes, userRes] = await Promise.all([
-                fetch(`${__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API_URL"]}/api/resumes`),
-                fetch(`${__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API_URL"]}/api/auth/me`)
+                (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchWithAuth"])('/api/resumes'),
+                (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchWithAuth"])('/api/auth/me')
             ]);
             const resumesData = await resumesRes.json();
             const userData = await userRes.json();
@@ -727,7 +748,7 @@ function Dashboard() {
     const deleteResume = async (id)=>{
         if (!confirm('Are you sure you want to delete this resume?')) return;
         try {
-            const res = await fetch(`${__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API_URL"]}/api/resumes/${id}`, {
+            const res = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchWithAuth"])(`/api/resumes/${id}`, {
                 method: 'DELETE'
             });
             if (res.status === 401) {

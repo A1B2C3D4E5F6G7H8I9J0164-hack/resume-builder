@@ -13,5 +13,11 @@ export const fetchWithAuth = async (endpoint: string, options: RequestInit = {})
         },
     };
 
-    return fetch(url, defaultOptions);
+    try {
+        const response = await fetch(url, defaultOptions);
+        return response;
+    } catch (error) {
+        console.error(`Failed to fetch ${url}:`, error);
+        throw new Error(`Network error: Unable to reach ${API_URL}. Please check if the backend is running.`);
+    }
 };
