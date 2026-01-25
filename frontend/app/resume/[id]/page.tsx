@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { API_URL } from '@/lib/api';
+import { fetchWithAuth } from '@/lib/api';
 import ResumeRenderer from '@/components/resume/ResumeRenderer';
 import { Download, Share2, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
@@ -13,7 +13,7 @@ export default function ResumePage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${API_URL}/api/resumes/${id}`)
+        fetchWithAuth(`/api/resumes/${id}`)
             .then(res => res.json())
             .then(data => {
                 setResume(data.resume);

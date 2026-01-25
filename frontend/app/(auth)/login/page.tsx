@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { API_URL } from '@/lib/api';
+import { fetchWithAuth } from '@/lib/api';
 
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -19,9 +19,8 @@ export default function LoginPage() {
         setLoading(true);
 
         try {
-            const res = await fetch(`${API_URL}/api/auth/login`, {
+            const res = await fetchWithAuth('/api/auth/login', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
             });
 

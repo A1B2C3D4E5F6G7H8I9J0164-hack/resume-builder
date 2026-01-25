@@ -1,3 +1,4 @@
 {
+  "/(publicPages)/page": "app/(publicPages)/page.js",
   "/dashboard/page": "app/dashboard/page.js"
 }

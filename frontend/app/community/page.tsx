@@ -1,6 +1,6 @@
 'use client';
 
-import { API_URL } from '@/lib/api';
+import { fetchWithAuth } from '@/lib/api';
 
 import { useEffect, useState } from 'react';
 import { DashboardLayout } from '@/components/dashboard/DashboardLayout';
@@ -16,7 +16,7 @@ export default function CommunityPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${API_URL}/api/community`)
+        fetchWithAuth('/api/community')
             .then(res => {
                 if (res.status === 401) {
                     toast.error('Session expired. Please log in again.');

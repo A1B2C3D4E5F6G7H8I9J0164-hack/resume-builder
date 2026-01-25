@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { API_URL } from '@/lib/api';
+import { fetchWithAuth } from '@/lib/api';
 
 import {
     LayoutDashboard,
@@ -35,7 +35,7 @@ export function Sidebar() {
     const pathname = usePathname();
 
     const handleLogout = async () => {
-        await fetch(`${API_URL}/api/auth/logout`, { method: 'POST' });
+        await fetchWithAuth('/api/auth/logout', { method: 'POST' });
         window.location.href = '/login';
     };
 
