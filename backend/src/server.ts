@@ -10,6 +10,7 @@ import aiRoutes from './routes/ai.js';
 dotenv.config();
 
 const app = express();
+app.set('trust proxy', 1); // Trust Render's load balancer for secure cookies
 const PORT = process.env.PORT || 5005;
 
 // Middleware
