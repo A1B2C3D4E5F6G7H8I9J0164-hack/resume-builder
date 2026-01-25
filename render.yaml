@@ -1,5 +1,5 @@
 services:
-  # Backend Service
+  # Backend
   - type: web
     name: resume-builder-backend
     env: node
@@ -7,22 +7,18 @@ services:
     buildCommand: npm install && npm run build
     startCommand: npm run start
     envVars:
-      - key: PORT
-        value: 10000 
       - key: NODE_VERSION
         value: 20.10.0
+      - key: PORT
+        value: 10000
       - key: MONGODB_URI
         sync: false
       - key: JWT_SECRET
         sync: false
-      - key: IMAGEKIT_PUBLIC_KEY
-        sync: false
-      - key: IMAGEKIT_PRIVATE_KEY
-        sync: false
-      - key: IMAGEKIT_URL_ENDPOINT
+      - key: GEMINI_API_KEY
         sync: false
 
-  # Frontend Service
+  # Frontend
   - type: web
     name: resume-builder-frontend
     env: node
@@ -32,9 +28,8 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20.10.0
-      # You'll need to update this after deploying the backend
       - key: NEXT_PUBLIC_API_URL
-        value: https://resume-builder-backend.onrender.com
+        sync: false
       - key: NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY
         sync: false
       - key: NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT
