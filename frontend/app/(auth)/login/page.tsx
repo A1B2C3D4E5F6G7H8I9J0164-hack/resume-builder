@@ -39,7 +39,8 @@ export default function LoginPage() {
             }
 
             toast.success('LoggedIn successfully!');
-            router.push('/dashboard');
+            // Force a full page reload to ensure cookies are picked up
+            window.location.href = '/dashboard';
         } catch (error: any) {
             toast.error(error.message);
         } finally {
