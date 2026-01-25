@@ -4,8 +4,15 @@ import { pricingData } from "@/data/pricing";
 import { IPricing } from "@/types";
 import { CheckIcon } from "lucide-react";
 import { motion } from "motion/react";
+import { useRouter } from "next/navigation";
 
 export default function PricingSection() {
+    const router = useRouter();
+
+    const handleGetStarted = () => {
+        router.push('/signup');
+    };
+
     return (
         <div id="pricing" className="px-4 md:px-16 lg:px-24 xl:px-32 py-20 relative bg-zinc-950">
             <SectionTitle
@@ -44,6 +51,7 @@ export default function PricingSection() {
 
                             <button
                                 type="button"
+                                onClick={handleGetStarted}
                                 className={`w-full py-4 rounded-xl font-bold transition-all active:scale-[0.95] ${plan.mostPopular ? 'bg-white text-black hover:bg-zinc-200' : 'bg-zinc-800 text-white hover:bg-zinc-700'}`}
                             >
                                 {plan.mostPopular ? 'Get Pro Access' : 'Start for Free'}

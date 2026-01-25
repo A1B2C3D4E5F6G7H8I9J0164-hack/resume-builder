@@ -3,8 +3,9 @@
 import { DashboardLayout } from '@/components/dashboard/DashboardLayout';
 import { User, Bell, Lock, Shield, CreditCard, ChevronRight, ArrowLeft, Camera, Save } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
+import { fetchWithAuth } from '@/lib/api';
 
 const sections = [
     { id: 'profile', name: 'Profile Information', icon: User, desc: 'Update your personal details and avatar' },
@@ -95,14 +96,73 @@ export default function SettingsPage() {
 
 function ProfileSettings() {
     const [loading, setLoading] = useState(false);
+    const [user, setUser] = useState<any>(null);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [bio, setBio] = useState('');
+    const [fetching, setFetching] = useState(true);
 
-    const handleSave = () => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            toast.success('Settings updated');
-        }, 1000);
+    useEffect(() => {
+        fetchUserData();
+    }, []);
+
+    const fetchUserData = async () => {
+        try {
+            const res = await fetchWithAuth('/api/auth/me');
+            const data = await res.json();
+            
+            if (res.ok && data.user) {
+                setUser(data.user);
+                setName(data.user.name || '');
+                setEmail(data.user.email || '');
+                setBio(data.user.bio || '');
+            } else {
+                toast.error('Failed to fetch user data');
+            }
+        } catch (error) {
+            toast.error('Failed to fetch user data');
+        } finally {
+            setFetching(false);
+        }
     };
+
+    const handleSave = async () => {
+        setLoading(true);
+        try {
+            // TODO: Implement update user API endpoint
+            // const res = await fetchWithAuth('/api/auth/update', {
+            //     method: 'PUT',
+            //     body: JSON.stringify({ name, email, bio }),
+            // });
+            // if (res.ok) {
+            //     toast.success('Settings updated');
+            //     fetchUserData();
+            // }
+            
+            // Temporary: just show success message
+            setTimeout(() => {
+                setLoading(false);
+                toast.success('Settings updated');
+            }, 1000);
+        } catch (error) {
+            setLoading(false);
+            toast.error('Failed to update settings');
+        }
+    };
+
+    if (fetching) {
+        return (
+            <div className="space-y-12">
+                <div className="px-2">
+                    <h1 className="text-3xl font-bold tracking-tight text-white">Profile</h1>
+                    <p className="text-zinc-500 mt-1 font-medium">Manage your professional identity</p>
+                </div>
+                <div className="py-20 bg-zinc-900/10 border border-zinc-900 rounded-3xl text-center">
+                    <p className="text-zinc-600 text-sm font-medium">Loading...</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="space-y-12">
@@ -114,12 +174,18 @@ function ProfileSettings() {
             <div className="flex items-center space-x-8 px-2">
                 <div className="relative group">
                     <div className="w-24 h-24 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-                        <User size={32} className="text-zinc-700" />
+                        {user?.name ? (
+                            <span className="text-2xl font-bold text-zinc-300">
+                                {user.name.charAt(0).toUpperCase()}
+                            </span>
+                        ) : (
+                            <User size={32} className="text-zinc-700" />
+                        )}
                     </div>
                 </div>
                 <div>
-                    <h4 className="font-bold text-white">Aditya Rana</h4>
-                    <p className="text-zinc-600 text-sm">aditya@example.com</p>
+                    <h4 className="font-bold text-white">{user?.name || 'User'}</h4>
+                    <p className="text-zinc-600 text-sm">{user?.email || 'No email'}</p>
                     <button className="text-blue-500 text-[10px] font-bold uppercase tracking-widest mt-2 hover:underline">Change Identity</button>
                 </div>
             </div>
@@ -127,15 +193,31 @@ function ProfileSettings() {
             <div className="grid grid-cols-2 gap-6 px-2">
                 <div className="space-y-2">
                     <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-700 ml-2">Display Name</label>
-                    <input type="text" defaultValue="Aditya Rana" className="w-full bg-zinc-950 border border-zinc-900 rounded-xl p-4 text-white text-sm focus:outline-none focus:border-zinc-700 transition-all font-medium" />
+                    <input 
+                        type="text" 
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="w-full bg-zinc-950 border border-zinc-900 rounded-xl p-4 text-white text-sm focus:outline-none focus:border-zinc-700 transition-all font-medium" 
+                    />
                 </div>
                 <div className="space-y-2">
                     <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-700 ml-2">Contact Email</label>
-                    <input type="email" defaultValue="aditya@example.com" className="w-full bg-zinc-950 border border-zinc-900 rounded-xl p-4 text-white text-sm focus:outline-none focus:border-zinc-700 transition-all font-medium" />
+                    <input 
+                        type="email" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full bg-zinc-950 border border-zinc-900 rounded-xl p-4 text-white text-sm focus:outline-none focus:border-zinc-700 transition-all font-medium" 
+                    />
                 </div>
                 <div className="col-span-2 space-y-2">
                     <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-700 ml-2">Bio Summary</label>
-                    <textarea rows={3} defaultValue="Computer Science Student | Aspiring Software Engineer" className="w-full bg-zinc-950 border border-zinc-900 rounded-xl p-4 text-white text-sm focus:outline-none focus:border-zinc-700 transition-all font-medium resize-none text-zinc-400" />
+                    <textarea 
+                        rows={3} 
+                        value={bio}
+                        onChange={(e) => setBio(e.target.value)}
+                        placeholder="Tell us about yourself..."
+                        className="w-full bg-zinc-950 border border-zinc-900 rounded-xl p-4 text-white text-sm focus:outline-none focus:border-zinc-700 transition-all font-medium resize-none text-zinc-400" 
+                    />
                 </div>
             </div>
 

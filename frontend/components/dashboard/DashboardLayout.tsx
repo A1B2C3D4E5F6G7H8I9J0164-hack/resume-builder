@@ -3,6 +3,7 @@
 import { Sidebar } from './Sidebar';
 import { Search, Bell, User } from 'lucide-react';
 import { motion } from 'motion/react';
+import Link from 'next/link';
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -29,9 +30,12 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                         </button>
 
                         <div className="flex items-center space-x-3">
-                            <div className="w-9 h-9 bg-zinc-900 border border-zinc-800 rounded-xl flex items-center justify-center overflow-hidden">
+                            <Link 
+                                href="/dashboard/settings"
+                                className="w-9 h-9 bg-zinc-900 border border-zinc-800 rounded-xl flex items-center justify-center overflow-hidden hover:border-zinc-700 transition-colors cursor-pointer"
+                            >
                                 <User className="text-zinc-600" size={18} />
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 </header>

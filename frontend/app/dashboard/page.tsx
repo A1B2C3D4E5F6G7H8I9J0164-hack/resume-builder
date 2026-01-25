@@ -24,6 +24,7 @@ export default function Dashboard() {
     const [resumes, setResumes] = useState([]);
     const [user, setUser] = useState<any>(null);
     const [loading, setLoading] = useState(true);
+    const [authenticated, setAuthenticated] = useState(false);
 
     useEffect(() => {
         fetchData();
@@ -40,19 +41,35 @@ export default function Dashboard() {
             const userData = await userRes.json();
 
             if (resumesRes.status === 401 || userRes.status === 401) {
-                toast.error('Session expired. Please log in again.');
+                toast.error('Please log in to access the dashboard.');
                 router.push('/login');
                 return;
             }
 
             if (resumesRes.ok) setResumes(resumesData.resumes);
-            if (userRes.ok) setUser(userData.user);
+            if (userRes.ok) {
+                setUser(userData.user);
+                setAuthenticated(true);
+            }
         } catch (error) {
             toast.error('Failed to fetch data');
+            router.push('/login');
         } finally {
             setLoading(false);
         }
     };
+
+    // Show loading state while checking authentication
+    if (loading || !authenticated) {
+        return (
+            <div className="flex min-h-screen bg-zinc-950 items-center justify-center">
+                <div className="text-center">
+                    <div className="w-8 h-8 border-4 border-zinc-800 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-zinc-500 text-sm font-medium">Loading...</p>
+                </div>
+            </div>
+        );
+    }
 
     const deleteResume = async (id: string) => {
         if (!confirm('Are you sure you want to delete this resume?')) return;

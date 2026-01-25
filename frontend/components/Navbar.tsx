@@ -42,7 +42,7 @@ export default function Navbar() {
                     <Link href="/login" className="text-sm font-bold text-zinc-500 hover:text-white transition-colors">
                         Sign In
                     </Link>
-                    <Link href="/dashboard" className="px-6 py-2.5 bg-white text-black font-bold text-sm rounded-xl hover:bg-zinc-200 transition-all active:scale-95">
+                    <Link href="/signup" className="px-6 py-2.5 bg-white text-black font-bold text-sm rounded-xl hover:bg-zinc-200 transition-all active:scale-95">
                         Get Started
                     </Link>
                 </div>
@@ -73,7 +73,7 @@ export default function Navbar() {
                                     {link.name}
                                 </Link>
                             ))}
-                            <Link href="/dashboard" onClick={() => setIsOpen(false)} className="mt-4 px-10 py-4 bg-white text-black rounded-xl">
+                            <Link href="/signup" onClick={() => setIsOpen(false)} className="mt-4 px-10 py-4 bg-white text-black rounded-xl">
                                 Start Free
                             </Link>
                         </div>

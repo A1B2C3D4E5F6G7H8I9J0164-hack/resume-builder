@@ -22,7 +22,7 @@ export default function CTASection() {
 
                 <div className="z-10 w-full md:w-auto">
                     <a
-                        href="/dashboard"
+                        href="/signup"
                         className="group flex items-center justify-center gap-3 bg-white text-black font-bold h-14 px-10 rounded-xl hover:bg-zinc-200 transition-all active:scale-95"
                     >
                         <span>Get Started Now</span>

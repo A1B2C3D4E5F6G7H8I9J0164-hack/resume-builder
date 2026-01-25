@@ -35,7 +35,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
             >
-                <a href="/dashboard" className="px-10 py-4 bg-white text-black font-bold rounded-xl hover:bg-zinc-200 transition-all active:scale-95">
+                <a href="/signup" className="px-10 py-4 bg-white text-black font-bold rounded-xl hover:bg-zinc-200 transition-all active:scale-95">
                     Start Building Free
                 </a>
                 <button className="flex items-center gap-3 bg-zinc-900 border border-zinc-800 hover:border-zinc-700 font-bold px-8 py-4 rounded-xl transition-all">
