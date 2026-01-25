@@ -5,3 +5,4 @@
 (Use `node --trace-deprecation ...` to show where the warning was created)
 [00:00:49.430] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
 [00:00:50.951] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:17.298] Server  LOG        Reload env: .env
