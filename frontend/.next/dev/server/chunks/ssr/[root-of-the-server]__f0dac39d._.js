@@ -4,9 +4,30 @@ module.exports = [
 
 __turbopack_context__.s([
     "API_URL",
-    ()=>API_URL
+    ()=>API_URL,
+    "fetchWithAuth",
+    ()=>fetchWithAuth
 ]);
-const API_URL = ("TURBOPACK compile-time value", "https://resumeai-k88u.onrender.com") || 'http://localhost:5005';
+const API_URL = ("TURBOPACK compile-time value", "http://localhost:5005") || 'http://localhost:5005';
+const fetchWithAuth = async (endpoint, options = {})=>{
+    const url = endpoint.startsWith('http') ? endpoint : `${API_URL}${endpoint}`;
+    // Ensure credentials are included for cross-site cookies
+    const defaultOptions = {
+        ...options,
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
+    };
+    try {
+        const response = await fetch(url, defaultOptions);
+        return response;
+    } catch (error) {
+        console.error(`Failed to fetch ${url}:`, error);
+        throw new Error(`Network error: Unable to reach ${API_URL}. Please check if the backend is running.`);
+    }
+};
 }),
 "[externals]/next/dist/server/app-render/action-async-storage.external.js [external] (next/dist/server/app-render/action-async-storage.external.js, cjs)", ((__turbopack_context__, module, exports) => {
 
@@ -55,11 +76,8 @@ function LoginPage() {
         e.preventDefault();
         setLoading(true);
         try {
-            const res = await fetch(`${__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["API_URL"]}/api/auth/login`, {
+            const res = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchWithAuth"])('/api/auth/login', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
                 body: JSON.stringify({
                     email,
                     password
@@ -79,7 +97,8 @@ function LoginPage() {
                 }
             }
             __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success('LoggedIn successfully!');
-            router.push('/dashboard');
+            // Force a full page reload to ensure cookies are picked up
+            window.location.href = '/dashboard';
         } catch (error) {
             __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].error(error.message);
         } finally{
