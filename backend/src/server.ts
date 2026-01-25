@@ -21,21 +21,14 @@ const allowedOrigins = [
 ].filter(Boolean) as string[];
 
 // Middleware
-app.use(
-    cors({
-        origin: (origin, callback) => {
-            // allow requests with no origin (like Postman)
-            if (!origin) return callback(null, true);
+app.use(cors({
+    origin: [
+        "http://localhost:3000",
+        "https://resume-builder-he2a-fc5i4p317.vercel.app"
+    ],
+    credentials: true
+}));
 
-            if (allowedOrigins.includes(origin)) {
-                return callback(null, true);
-            }
-
-            return callback(new Error(`CORS blocked for origin: ${origin}`));
-        },
-        credentials: true,
-    })
-);
 
 app.use(express.json());
 app.use(cookieParser());
