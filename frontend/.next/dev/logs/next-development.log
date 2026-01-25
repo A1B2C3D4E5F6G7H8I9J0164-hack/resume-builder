@@ -5,3 +5,5 @@
 [00:00:20.487] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
 [00:00:27.139] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
 [00:00:35.403] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:52.019] Server  LOG        Reload env: .env
+[00:07:52.311] Server  LOG      ✓ Compiled in 164ms
