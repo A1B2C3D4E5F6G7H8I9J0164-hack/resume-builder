@@ -6,7 +6,7 @@ __turbopack_context__.s([
     "API_URL",
     ()=>API_URL
 ]);
-const API_URL = ("TURBOPACK compile-time value", "http://localhost:5005") || 'http://localhost:5005';
+const API_URL = ("TURBOPACK compile-time value", "https://resumeai-k88u.onrender.com") || 'http://localhost:5005';
 }),
 "[externals]/next/dist/server/app-render/action-async-storage.external.js [external] (next/dist/server/app-render/action-async-storage.external.js, cjs)", ((__turbopack_context__, module, exports) => {
 

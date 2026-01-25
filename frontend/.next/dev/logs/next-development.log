@@ -120,3 +120,5 @@ Import traces:
   Client Component SSR:
     ./frontend/app/(auth)/login/page.tsx [Client Component SSR]
     ./frontend/app/(auth)/login/page.tsx [Server Component]
+[00:11:09.773] Server  LOG        Reload env: .env
+[00:11:09.836] Server  LOG      ✓ Compiled in 129ms
