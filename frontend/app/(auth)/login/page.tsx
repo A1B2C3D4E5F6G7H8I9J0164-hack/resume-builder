@@ -38,9 +38,8 @@ export default function LoginPage() {
                 }
             }
 
-            toast.success('LoggedIn successfully!');
-            // Force a full page reload to ensure cookies are picked up
-            window.location.href = '/dashboard';
+            toast.success('Logged in successfully!');
+            router.push('/dashboard');
         } catch (error: any) {
             toast.error(error.message);
         } finally {
