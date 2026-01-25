@@ -28,10 +28,12 @@ router.post('/register', async (req: Request, res: Response) => {
 
         const token = signToken({ userId: user._id });
 
+        const isProduction = process.env.FRONTEND_URL?.startsWith('https://');
+
         res.cookie('token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // Allow cross-site in production
+            secure: isProduction,
+            sameSite: isProduction ? 'none' : 'lax',
             maxAge: 30 * 24 * 60 * 60 * 1000,
             path: '/',
         });
@@ -62,10 +64,12 @@ router.post('/login', async (req: Request, res: Response) => {
 
         const token = signToken({ userId: user._id });
 
+        const isProduction = process.env.FRONTEND_URL?.startsWith('https://');
+
         res.cookie('token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+            secure: isProduction,
+            sameSite: isProduction ? 'none' : 'lax',
             maxAge: 30 * 24 * 60 * 60 * 1000,
             path: '/',
         });
