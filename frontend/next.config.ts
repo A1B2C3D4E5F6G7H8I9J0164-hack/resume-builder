@@ -21,7 +21,6 @@ const nextConfig: NextConfig = {
 
     async rewrites() {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
         if (!apiUrl) return [];
 
         return [
@@ -31,6 +30,7 @@ const nextConfig: NextConfig = {
             },
         ];
     }
+
 
 };
 
