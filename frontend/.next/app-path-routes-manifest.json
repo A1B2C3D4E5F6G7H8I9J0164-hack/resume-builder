@@ -1,0 +1,19 @@
+{
+  "/(auth)/login/page": "/login",
+  "/(auth)/signup/page": "/signup",
+  "/(publicPages)/page": "/",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/apple-icon.png/route": "/apple-icon.png",
+  "/community/page": "/community",
+  "/dashboard/create/page": "/dashboard/create",
+  "/dashboard/page": "/dashboard",
+  "/dashboard/resumes/page": "/dashboard/resumes",
+  "/dashboard/settings/page": "/dashboard/settings",
+  "/dashboard/templates/page": "/dashboard/templates",
+  "/favicon.ico/route": "/favicon.ico",
+  "/icon0.svg/route": "/icon0.svg",
+  "/icon1.png/route": "/icon1.png",
+  "/manifest.json/route": "/manifest.json",
+  "/resume/[id]/page": "/resume/[id]"
+}
