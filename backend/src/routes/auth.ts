@@ -7,14 +7,11 @@ const router = express.Router();
 
 const COOKIE_NAME = "token";
 
-// ✅ Detect production safely
-const isProduction = process.env.NODE_ENV === "production";
-
-// ✅ Common cookie options
+// ✅ Cookie options for cross-site auth (Vercel + Render)
 const cookieOptions = {
     httpOnly: true,
-    secure: isProduction,                 // ✅ true on Render (https)
-    sameSite: (isProduction ? "none" : "lax") as "none" | "lax",
+    secure: true,       // ✅ must be true on Vercel/Render
+    sameSite: "none" as const,   // ✅ must be none for cross-site
     maxAge: 30 * 24 * 60 * 60 * 1000,     // 30 days
     path: "/",
 };
@@ -118,8 +115,8 @@ router.get("/me", async (req: Request, res: Response) => {
 router.post("/logout", (req: Request, res: Response) => {
     res.clearCookie(COOKIE_NAME, {
         path: "/",
-        sameSite: (isProduction ? "none" : "lax") as "none" | "lax",
-        secure: isProduction,
+        sameSite: "none" as const,
+        secure: true,
     });
 
     return res.json({ message: "Logged out successfully" });
