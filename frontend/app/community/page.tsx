@@ -1,5 +1,7 @@
 'use client';
 
+import { API_URL } from '@/lib/api';
+
 import { useEffect, useState } from 'react';
 import { DashboardLayout } from '@/components/dashboard/DashboardLayout';
 import { FileText, Eye, User, Globe } from 'lucide-react';
@@ -14,7 +16,7 @@ export default function CommunityPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/api/community')
+        fetch(`${API_URL}/api/community`)
             .then(res => {
                 if (res.status === 401) {
                     toast.error('Session expired. Please log in again.');

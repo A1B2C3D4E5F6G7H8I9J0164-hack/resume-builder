@@ -122,3 +122,7 @@ Import traces:
     ./frontend/app/(auth)/login/page.tsx [Server Component]
 [00:11:09.773] Server  LOG        Reload env: .env
 [00:11:09.836] Server  LOG      ✓ Compiled in 129ms
+[00:11:39.463] Server  LOG      ✓ Compiled in 135ms
+[00:11:42.283] Server  LOG      ✓ Compiled in 137ms
+[00:12:32.146] Server  LOG      ✓ Compiled in 90ms
+[00:12:33.501] Server  LOG      ✓ Compiled in 81ms

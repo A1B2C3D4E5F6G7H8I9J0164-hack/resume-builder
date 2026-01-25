@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { API_URL } from '@/lib/api';
 import { motion, AnimatePresence } from 'motion/react';
 import { useRouter } from 'next/navigation';
 import { User, Briefcase, GraduationCap, Code, Layout, Palette, Wand2, ArrowRight, ArrowLeft, Save, Plus, Trash2, Eye } from 'lucide-react';
@@ -43,7 +44,7 @@ export default function ResumeBuilder() {
     const handleAiGenerate = async () => {
         setAiGenerating(true);
         try {
-            const res = await fetch('/api/generate-ai', {
+            const res = await fetch(`${API_URL}/api/generate-ai`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
@@ -83,7 +84,7 @@ export default function ResumeBuilder() {
     const handleSave = async () => {
         setLoading(true);
         try {
-            const res = await fetch('/api/resumes', {
+            const res = await fetch(`${API_URL}/api/resumes`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

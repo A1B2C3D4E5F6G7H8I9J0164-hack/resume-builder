@@ -98,12 +98,12 @@ function Sidebar() {
                                 size: 18
                             }, void 0, false, {
                                 fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                                lineNumber: 46,
+                                lineNumber: 47,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                            lineNumber: 45,
+                            lineNumber: 46,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -111,18 +111,18 @@ function Sidebar() {
                             children: "RESUME.AI"
                         }, void 0, false, {
                             fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                            lineNumber: 48,
+                            lineNumber: 49,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                    lineNumber: 44,
+                    lineNumber: 45,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                lineNumber: 43,
+                lineNumber: 44,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -135,25 +135,25 @@ function Sidebar() {
                             size: 18
                         }, void 0, false, {
                             fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                            lineNumber: 57,
+                            lineNumber: 58,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                             children: "Create New"
                         }, void 0, false, {
                             fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                            lineNumber: 58,
+                            lineNumber: 59,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                    lineNumber: 53,
+                    lineNumber: 54,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                lineNumber: 52,
+                lineNumber: 53,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -169,7 +169,7 @@ function Sidebar() {
                                 className: cn("transition-colors", isActive ? "text-blue-500" : "text-zinc-500 group-hover:text-white")
                             }, void 0, false, {
                                 fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                                lineNumber: 76,
+                                lineNumber: 77,
                                 columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -177,7 +177,7 @@ function Sidebar() {
                                 children: item.label
                             }, void 0, false, {
                                 fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                                lineNumber: 80,
+                                lineNumber: 81,
                                 columnNumber: 29
                             }, this),
                             isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -185,19 +185,19 @@ function Sidebar() {
                                 className: "ml-auto w-1.5 h-1.5 rounded-full bg-blue-500"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                                lineNumber: 82,
+                                lineNumber: 83,
                                 columnNumber: 33
                             }, this)
                         ]
                     }, item.label, true, {
                         fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                        lineNumber: 66,
+                        lineNumber: 67,
                         columnNumber: 25
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                lineNumber: 62,
+                lineNumber: 63,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -211,7 +211,7 @@ function Sidebar() {
                             className: "text-zinc-500 group-hover:text-red-500"
                         }, void 0, false, {
                             fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                            lineNumber: 97,
+                            lineNumber: 98,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -219,24 +219,24 @@ function Sidebar() {
                             children: "Logout"
                         }, void 0, false, {
                             fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                            lineNumber: 98,
+                            lineNumber: 99,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                    lineNumber: 93,
+                    lineNumber: 94,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-                lineNumber: 92,
+                lineNumber: 93,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/frontend/components/dashboard/Sidebar.tsx",
-        lineNumber: 42,
+        lineNumber: 43,
         columnNumber: 9
     }, this);
 }
