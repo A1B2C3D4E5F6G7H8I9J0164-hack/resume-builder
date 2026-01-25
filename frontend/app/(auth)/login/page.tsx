@@ -38,8 +38,9 @@ export default function LoginPage() {
                 }
             }
 
-            toast.success('Logged in successfully!');
-            router.push('/dashboard');
+            toast.success("Logged in successfully!");
+            window.location.href = "/dashboard";
+
         } catch (error: any) {
             toast.error(error.message);
         } finally {
