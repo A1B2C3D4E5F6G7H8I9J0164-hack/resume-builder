@@ -22,10 +22,22 @@ const allowedOrigins = [
 
 // Middleware
 app.use(cors({
-    origin: [
-        "http://localhost:3000",
-        "https://resume-builder-he2a-fc5i4p317.vercel.app"
-    ],
+    origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        
+        // Check if origin is in allowed list
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            // For production, be more permissive with Vercel preview URLs
+            if (process.env.NODE_ENV === 'production' && origin.includes('vercel.app')) {
+                callback(null, true);
+            } else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        }
+    },
     credentials: true
 }));
 

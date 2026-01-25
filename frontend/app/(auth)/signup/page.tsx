@@ -40,7 +40,11 @@ export default function SignupPage() {
             }
 
             toast.success('Account created successfully!');
-            router.push('/dashboard');
+            // Use window.location.href for full page reload to ensure cross-site cookies are processed
+            // This is necessary for cookies set by the backend (Render) to be available to the frontend (Vercel)
+            setTimeout(() => {
+                window.location.href = "/dashboard";
+            }, 100);
         } catch (error: any) {
             toast.error(error.message);
         } finally {

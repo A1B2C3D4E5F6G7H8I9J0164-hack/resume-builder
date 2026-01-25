@@ -5,28 +5,50 @@ module.exports = [
 __turbopack_context__.s([
     "API_URL",
     ()=>API_URL,
+    "fetchJSON",
+    ()=>fetchJSON,
     "fetchWithAuth",
     ()=>fetchWithAuth
 ]);
-const API_URL = ("TURBOPACK compile-time value", "https://resumeai-k88u.onrender.com") || 'http://localhost:5005';
+const API_URL = ("TURBOPACK compile-time value", "https://resumeai-k88u.onrender.com")?.trim() || "http://localhost:5005";
 const fetchWithAuth = async (endpoint, options = {})=>{
-    const url = endpoint.startsWith('http') ? endpoint : `${API_URL}${endpoint}`;
-    // Ensure credentials are included for cross-site cookies
-    const defaultOptions = {
+    const url = endpoint.startsWith("http") ? endpoint : `${API_URL}${endpoint}`;
+    const headers = new Headers(options.headers || {});
+    // ✅ Only set JSON header if caller didn't set it
+    if (!headers.has("Content-Type")) {
+        headers.set("Content-Type", "application/json");
+    }
+    const finalOptions = {
         ...options,
-        credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json',
-            ...options.headers
-        }
+        headers,
+        credentials: "include"
     };
     try {
-        const response = await fetch(url, defaultOptions);
-        return response;
-    } catch (error) {
-        console.error(`Failed to fetch ${url}:`, error);
-        throw new Error(`Network error: Unable to reach ${API_URL}. Please check if the backend is running.`);
+        const res = await fetch(url, finalOptions);
+        return res;
+    } catch (err) {
+        console.error(`❌ Fetch failed: ${url}`, err);
+        throw new Error(`Network error: Unable to reach backend (${API_URL}). Check if backend is running / URL is correct.`);
     }
+};
+const fetchJSON = async (endpoint, options = {})=>{
+    const res = await fetchWithAuth(endpoint, options);
+    const contentType = res.headers.get("content-type") || "";
+    if (contentType.includes("application/json")) {
+        const data = await res.json();
+        if (!res.ok) {
+            throw new Error(data?.error || data?.message || "Request failed");
+        }
+        return data;
+    }
+    // non-json response
+    const text = await res.text();
+    if (!res.ok) {
+        console.error("Server returned non-JSON error:", text);
+        throw new Error("Server error occurred. Please try again.");
+    }
+    // If it was ok but not JSON, still fail safely
+    throw new Error("Unexpected server response.");
 };
 }),
 "[externals]/next/dist/server/app-render/action-async-storage.external.js [external] (next/dist/server/app-render/action-async-storage.external.js, cjs)", ((__turbopack_context__, module, exports) => {
