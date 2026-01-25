@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { API_URL } from '@/lib/api';
 import { DashboardLayout } from '@/components/dashboard/DashboardLayout';
 import { StatCard } from '@/components/dashboard/StatCard';
 import { ResumeCard } from '@/components/dashboard/ResumeCard';
@@ -31,8 +32,8 @@ export default function Dashboard() {
     const fetchData = async () => {
         try {
             const [resumesRes, userRes] = await Promise.all([
-                fetch('/api/resumes'),
-                fetch('/api/auth/me')
+                fetch(`${API_URL}/api/resumes`),
+                fetch(`${API_URL}/api/auth/me`)
             ]);
 
             const resumesData = await resumesRes.json();
@@ -56,7 +57,7 @@ export default function Dashboard() {
     const deleteResume = async (id: string) => {
         if (!confirm('Are you sure you want to delete this resume?')) return;
         try {
-            const res = await fetch(`/api/resumes/${id}`, { method: 'DELETE' });
+            const res = await fetch(`${API_URL}/api/resumes/${id}`, { method: 'DELETE' });
 
             if (res.status === 401) {
                 toast.error('Session expired. Please log in again.');

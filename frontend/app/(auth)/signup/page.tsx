@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { API_URL } from '@/lib/api';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { toast } from 'sonner';
+
 
 export default function SignupPage() {
     const [name, setName] = useState('');
@@ -17,7 +19,7 @@ export default function SignupPage() {
         setLoading(true);
 
         try {
-            const res = await fetch('/api/auth/register', {
+            const res = await fetch(`${API_URL}/api/auth/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password }),

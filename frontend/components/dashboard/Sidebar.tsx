@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { API_URL } from '@/lib/api';
 import {
     LayoutDashboard,
     FileText,
@@ -15,6 +16,7 @@ import {
 import { motion } from 'motion/react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+
 
 function cn(...inputs: any[]) {
     return twMerge(clsx(inputs));
@@ -32,7 +34,7 @@ export function Sidebar() {
     const pathname = usePathname();
 
     const handleLogout = async () => {
-        await fetch('/api/auth/logout', { method: 'POST' });
+        await fetch(`${API_URL}/api/auth/logout`, { method: 'POST' });
         window.location.href = '/login';
     };
 
