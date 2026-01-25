@@ -3,7 +3,7 @@ services:
   - type: web
     name: resume-builder-backend
     env: node
-    root: backend
+    rootDir: backend
     buildCommand: npm install && npm run build
     startCommand: npm run start
     envVars:
@@ -22,7 +22,7 @@ services:
   - type: web
     name: resume-builder-frontend
     env: node
-    root: frontend
+    rootDir: frontend
     buildCommand: npm install && npm run build
     startCommand: npm run start
     envVars:
@@ -30,3 +30,4 @@ services:
         value: 20.10.0
       - key: NEXT_PUBLIC_API_URL
         sync: false
+  
