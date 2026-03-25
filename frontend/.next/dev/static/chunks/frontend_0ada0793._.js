@@ -370,7 +370,7 @@ function CTASection() {
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "z-10 w-full md:w-auto",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                        href: "/dashboard",
+                        href: "/signup",
                         className: "group flex items-center justify-center gap-3 bg-white text-black font-bold h-14 px-10 rounded-xl hover:bg-zinc-200 transition-all active:scale-95",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -950,7 +950,7 @@ function HeroSection() {
                 },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                        href: "/dashboard",
+                        href: "/signup",
                         className: "px-10 py-4 bg-white text-black font-bold rounded-xl hover:bg-zinc-200 transition-all active:scale-95",
                         children: "Start Building Free"
                     }, void 0, false, {
@@ -1122,6 +1122,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$la
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$data$2f$pricing$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/data/pricing.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckIcon$3e$__ = __turbopack_context__.i("[project]/frontend/node_modules/lucide-react/dist/esm/icons/check.js [app-client] (ecmascript) <export default as CheckIcon>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/node_modules/next/navigation.js [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
 'use client';
 ;
 ;
@@ -1129,6 +1132,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$
 ;
 ;
 function PricingSection() {
+    _s();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
+    const handleGetStarted = ()=>{
+        router.push('/signup');
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         id: "pricing",
         className: "px-4 md:px-16 lg:px-24 xl:px-32 py-20 relative bg-zinc-950",
@@ -1139,7 +1147,7 @@ function PricingSection() {
                 text3: "Select the tier that aligns with your professional ambitions. Transparent pricing for career excellence."
             }, void 0, false, {
                 fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                lineNumber: 11,
+                lineNumber: 18,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1171,7 +1179,7 @@ function PricingSection() {
                                             children: plan.name
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                                            lineNumber: 29,
+                                            lineNumber: 36,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1185,7 +1193,7 @@ function PricingSection() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                                                    lineNumber: 31,
+                                                    lineNumber: 38,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1196,19 +1204,19 @@ function PricingSection() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                                                    lineNumber: 32,
+                                                    lineNumber: 39,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                                            lineNumber: 30,
+                                            lineNumber: 37,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                                    lineNumber: 28,
+                                    lineNumber: 35,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1221,7 +1229,7 @@ function PricingSection() {
                                                     strokeWidth: 3
                                                 }, void 0, false, {
                                                     fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                                                    lineNumber: 39,
+                                                    lineNumber: 46,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1229,52 +1237,58 @@ function PricingSection() {
                                                     children: feature
                                                 }, void 0, false, {
                                                     fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                                                    lineNumber: 40,
+                                                    lineNumber: 47,
                                                     columnNumber: 41
                                                 }, this)
                                             ]
                                         }, idx, true, {
                                             fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                                            lineNumber: 38,
+                                            lineNumber: 45,
                                             columnNumber: 37
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                                    lineNumber: 36,
+                                    lineNumber: 43,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     type: "button",
+                                    onClick: handleGetStarted,
                                     className: `w-full py-4 rounded-xl font-bold transition-all active:scale-[0.95] ${plan.mostPopular ? 'bg-white text-black hover:bg-zinc-200' : 'bg-zinc-800 text-white hover:bg-zinc-700'}`,
                                     children: plan.mostPopular ? 'Get Pro Access' : 'Start for Free'
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                                    lineNumber: 45,
+                                    lineNumber: 52,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                            lineNumber: 27,
+                            lineNumber: 34,
                             columnNumber: 25
                         }, this)
                     }, index, false, {
                         fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                        lineNumber: 19,
+                        lineNumber: 26,
                         columnNumber: 21
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-                lineNumber: 17,
+                lineNumber: 24,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/frontend/components/landing/PricingSection.tsx",
-        lineNumber: 10,
+        lineNumber: 17,
         columnNumber: 9
     }, this);
 }
+_s(PricingSection, "fN7XvhJ+p5oE6+Xlo0NJmXpxjC8=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
+    ];
+});
 _c = PricingSection;
 var _c;
 __turbopack_context__.k.register(_c, "PricingSection");

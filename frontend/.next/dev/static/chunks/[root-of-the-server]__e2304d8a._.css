@@ -1442,6 +1442,11 @@
     border-width: 2px;
   }
 
+  .border-4 {
+    border-style: var(--tw-border-style);
+    border-width: 4px;
+  }
+
   .border-t {
     border-top-style: var(--tw-border-style);
     border-top-width: 1px;
@@ -1607,6 +1612,10 @@
 
   .border-zinc-950 {
     border-color: var(--color-zinc-950);
+  }
+
+  .border-t-white {
+    border-top-color: var(--color-white);
   }
 
   .bg-amber-500\/10 {

@@ -25,13 +25,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$
 ;
 function middleware(request) {
     const token = request.cookies.get('token')?.value;
-    // Check if the request is for a protected route
-    if (request.nextUrl.pathname.startsWith('/dashboard')) {
-        if (!token) {
-            return __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].redirect(new URL('/login', request.url));
-        }
-    }
-    // Redirect logged-in users away from login/signup pages
+    // For protected routes, we allow the request through and let the page handle auth
+    // This is necessary because cross-site cookies (backend on Render) may not be
+    // immediately available to the middleware (frontend on Vercel)
+    // The page components will check authentication via API calls
+    // Only redirect logged-in users away from login/signup pages if we have a token
+    // (This works for same-site cookies, but cross-site cookies may not be available)
     if (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/signup') {
         if (token) {
             return __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].redirect(new URL('/dashboard', request.url));
